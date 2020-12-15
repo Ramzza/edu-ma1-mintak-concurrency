@@ -1,7 +1,5 @@
 package locks;
 
-import model.DataBaseSimulator;
-
 public class PessimisticLockManager {
     public static PessimisticLockManager instance = null;
 

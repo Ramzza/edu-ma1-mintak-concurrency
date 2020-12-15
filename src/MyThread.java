@@ -5,9 +5,11 @@ public class MyThread implements Runnable {
     private String threadName;
     private AbsDataBase db;
     private AbsDataBase dbDraft;
+    private int increment;
 
-    MyThread(String name, AbsDataBase db) {
+    MyThread(String name, int increment, AbsDataBase db) {
         threadName = name;
+        this.increment = increment;
         this.db = db;
         System.out.println("Creating " + threadName);
     }
@@ -49,6 +51,7 @@ public class MyThread implements Runnable {
     }
 
     private boolean ir() {
+        this.dbDraft.carPrice += this.increment;
         this.dbDraft = this.db.takeOverDraft(this.threadName, this.dbDraft);
         if (this.dbDraft == null) {
             System.out.println(threadName + " ir - sikertelen");
