@@ -2,9 +2,7 @@ package model;
 
 import locks.PessimisticLockManager;
 
-public class DataBaseSimulator {
-    private String carName;
-    private int carPrice;
+public class DataBaseSimulator extends AbsDataBase {
     private PessimisticLockManager lockManager;
 
     public DataBaseSimulator(String carName, int carPrice) {

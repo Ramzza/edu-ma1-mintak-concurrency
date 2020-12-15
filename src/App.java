@@ -1,15 +1,26 @@
+import model.AbsDataBase;
 import model.DataBaseSimulator;
+import model.OptimisticDataBase;
 
 public class App {
 
-    public volatile int iCounter = 0;
-
     public static void main(String[] args) {
-        DataBaseSimulator db = new DataBaseSimulator("Ford", 5000);
-        MyThread R1 = new MyThread("Thread-1", db);
-        R1.start();
+        boolean opt = true;
+        AbsDataBase db;
+        if (opt) {
+            db = new OptimisticDataBase("Ford", 5000);
+        } else {
+            db = new DataBaseSimulator("Ford", 5000);
+        }
 
-        MyThread R2 = new MyThread("Thread-2", db);
-        R2.start();
+        MyThread t1 = new MyThread("Janos", db);
+        MyThread t2 = new MyThread("Eszter", db);
+        MyThread t3 = new MyThread("Andras", db);
+        MyThread t4 = new MyThread("Kata", db);
+
+        t1.start();
+        t2.start();
+        t3.start();
+        t4.start();
     }
 }

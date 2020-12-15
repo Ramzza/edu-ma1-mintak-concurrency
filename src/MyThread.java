@@ -1,11 +1,12 @@
+import model.AbsDataBase;
 import model.DataBaseSimulator;
 
 public class MyThread implements Runnable {
     private Thread t;
     private String threadName;
-    private DataBaseSimulator db;
+    private AbsDataBase db;
 
-    MyThread(String name, DataBaseSimulator db) {
+    MyThread(String name, AbsDataBase db) {
         threadName = name;
         this.db = db;
         System.out.println("Creating " + threadName);

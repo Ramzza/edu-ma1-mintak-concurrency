@@ -1,9 +1,7 @@
 package model;
 
-public class OptimisticDataBase {
+public class OptimisticDataBase extends AbsDataBase {
     private int counter;
-    private String carName;
-    private int carPrice;
 
     public OptimisticDataBase(int counter, String carName, int carPrice) {
         this.counter = 0;
