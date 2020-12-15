@@ -11,11 +11,9 @@ public class MyThread implements Runnable {
         threadName = name;
         this.increment = increment;
         this.db = db;
-        System.out.println("Creating " + threadName);
     }
 
     public void run() {
-        System.out.println("Running " + threadName);
         try {
             if (!this.olvas()) {
                 return;
