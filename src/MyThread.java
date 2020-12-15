@@ -8,7 +8,7 @@ public class MyThread implements Runnable {
     private int increment;
 
     MyThread(String name, int increment, AbsDataBase db) {
-        threadName = name;
+        this.threadName = name;
         this.increment = increment;
         this.db = db;
     }
@@ -32,18 +32,18 @@ public class MyThread implements Runnable {
             }
             Thread.sleep(1);
         } catch (InterruptedException e) {
-            System.out.println("Thread " + threadName + " interrupted.");
+            System.out.println(this.threadName + " exception");
         }
     }
 
     private boolean olvas() {
-        this.dbDraft = db.getDraft(threadName);
+        this.dbDraft = db.getDraft(this.threadName);
 
         if (this.dbDraft == null) {
-            System.out.println(threadName + " olvas - sikertelen");
+            System.out.println(this.threadName + " olvas - sikertelen");
             return false;
         } else {
-            System.out.println(threadName + " olvas: " + dbDraft.carName + ", " + dbDraft.carPrice);
+            System.out.println(this.threadName + " olvas: " + this.dbDraft.carName + ", " + this.dbDraft.carPrice);
             return true;
         }
     }
@@ -55,17 +55,17 @@ public class MyThread implements Runnable {
         }
 
         if (this.dbDraft == null) {
-            System.out.println(threadName + " ir - sikertelen");
+            System.out.println(this.threadName + " ir - sikertelen");
             return false;
         } else {
-            System.out.println(threadName + " ir: " + dbDraft.carName + ", " + dbDraft.carPrice);
+            System.out.println(this.threadName + " ir: " + this.dbDraft.carName + ", " + this.dbDraft.carPrice);
             return true;
         }
     }
 
     public void start() {
         if (t == null) {
-            t = new Thread(this, threadName);
+            t = new Thread(this, this.threadName);
             t.start();
         }
     }
