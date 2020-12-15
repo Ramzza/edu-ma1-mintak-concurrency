@@ -19,9 +19,13 @@ public class DataBaseSimulator extends AbsDataBase {
         return new DataBaseSimulator(this.carName, this.carPrice);
     }
 
-    public void takeOverDraft(String owner, DataBaseSimulator db) {
+    public DataBaseSimulator takeOverDraft(String owner, DataBaseSimulator db) {
         this.carName = db.carName;
         this.carPrice = db.carPrice;
-        this.lockManager.setLock(owner, false);
+        if (this.lockManager.setLock(owner, false)) {
+            return this;
+        } else {
+            return null;
+        }
     }
 }
