@@ -49,8 +49,11 @@ public class MyThread implements Runnable {
     }
 
     private boolean ir() {
-        this.dbDraft.carPrice += this.increment;
-        this.dbDraft = this.db.takeOverDraft(this.threadName, this.dbDraft);
+        if (this.dbDraft != null) {
+            this.dbDraft.carPrice += this.increment;
+            this.dbDraft = this.db.takeOverDraft(this.threadName, this.dbDraft);
+        }
+
         if (this.dbDraft == null) {
             System.out.println(threadName + " ir - sikertelen");
             return false;

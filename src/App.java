@@ -5,7 +5,7 @@ import model.OptimisticDataBase;
 public class App {
 
     public static void main(String[] args) {
-        boolean opt = true;
+        boolean opt = false;
         AbsDataBase db;
         if (opt) {
             db = new OptimisticDataBase("Ford", 5000);
