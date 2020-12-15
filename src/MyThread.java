@@ -1,10 +1,10 @@
 import model.AbsDataBase;
-import model.DataBaseSimulator;
 
 public class MyThread implements Runnable {
     private Thread t;
     private String threadName;
     private AbsDataBase db;
+    private AbsDataBase dbDraft;
 
     MyThread(String name, AbsDataBase db) {
         threadName = name;
@@ -14,25 +14,52 @@ public class MyThread implements Runnable {
 
     public void run() {
         System.out.println("Running " + threadName);
-        // try {
-        for (int i = 4; i > 0; i--) {
-            System.out.println("Thread: " + threadName + ", " + i);
-            System.out.println("Thread: " + threadName + ", " + i);
-            // Let the thread sleep for a while.
-            // if (threadName == "Thread-1") {
-            // Thread.sleep(10);
-            // } else {
-            // Thread.sleep(150);
-            // }
+        try {
+            if (!this.olvas()) {
+                return;
+            }
+            Thread.sleep(10);
+            if (!this.ir()) {
+                return;
+            }
+            Thread.sleep(10);
+            if (!this.olvas()) {
+                return;
+            }
+            Thread.sleep(10);
+            if (!this.ir()) {
+                return;
+            }
+            Thread.sleep(10);
+        } catch (InterruptedException e) {
+            System.out.println("Thread " + threadName + " interrupted.");
         }
-        // } catch (InterruptedException e) {
-        // System.out.println("Thread " + threadName + " interrupted.");
-        // }
-        System.out.println("Thread " + threadName + " exiting.");
+    }
+
+    private boolean olvas() {
+        this.dbDraft = db.getDraft(threadName);
+
+        if (this.dbDraft == null) {
+            System.out.println(threadName + " olvas - sikertelen");
+            return false;
+        } else {
+            System.out.println(threadName + " olvas: " + dbDraft.carName + ", " + dbDraft.carPrice);
+            return true;
+        }
+    }
+
+    private boolean ir() {
+        this.dbDraft = this.db.takeOverDraft(this.threadName, this.dbDraft);
+        if (this.dbDraft == null) {
+            System.out.println(threadName + " ir - sikertelen");
+            return false;
+        } else {
+            System.out.println(threadName + " ir: " + dbDraft.carName + ", " + dbDraft.carPrice);
+            return true;
+        }
     }
 
     public void start() {
-        System.out.println("Starting " + threadName);
         if (t == null) {
             t = new Thread(this, threadName);
             t.start();

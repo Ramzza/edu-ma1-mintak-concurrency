@@ -2,14 +2,14 @@ package model;
 
 public abstract class AbsDataBase {
     protected int counter;
-    protected String carName;
-    protected int carPrice;
+    public String carName;
+    public int carPrice;
 
     public AbsDataBase getDraft(String owner) {
         return null;
     }
 
-    public void takeOverDraft(String owner, AbsDataBase db) {
-
+    public AbsDataBase takeOverDraft(String owner, AbsDataBase db) {
+        return null;
     }
 }
