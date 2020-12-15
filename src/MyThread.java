@@ -16,19 +16,19 @@ public class MyThread implements Runnable {
     public void run() {
         try {
             if (!this.olvas()) {
-                return;
+                // return;
             }
             Thread.sleep(1);
             if (!this.ir()) {
-                return;
+                // return;
             }
             Thread.sleep(1);
             if (!this.olvas()) {
-                return;
+                // return;
             }
             Thread.sleep(1);
             if (!this.ir()) {
-                return;
+                // return;
             }
             Thread.sleep(1);
         } catch (InterruptedException e) {

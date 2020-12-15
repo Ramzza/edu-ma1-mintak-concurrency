@@ -13,10 +13,10 @@ public class App {
             db = new DataBaseSimulator("Ford", 5000);
         }
 
-        MyThread t1 = new MyThread("Janos", 100, db);
-        MyThread t2 = new MyThread("Eszter", 33, db);
-        MyThread t3 = new MyThread("Andras", 324, db);
-        MyThread t4 = new MyThread("Kata", 663, db);
+        MyThread t1 = new MyThread("1 Janos", 100, db);
+        MyThread t2 = new MyThread("2 Eszter", 33, db);
+        MyThread t3 = new MyThread("3 Andras", 324, db);
+        MyThread t4 = new MyThread("4 Kata", 663, db);
 
         t1.start();
         t2.start();

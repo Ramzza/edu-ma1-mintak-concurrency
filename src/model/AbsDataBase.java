@@ -1,7 +1,6 @@
 package model;
 
 public abstract class AbsDataBase {
-    protected int counter;
     public String carName;
     public int carPrice;
 

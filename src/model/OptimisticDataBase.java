@@ -20,7 +20,7 @@ public class OptimisticDataBase extends AbsDataBase {
     }
 
     public OptimisticDataBase takeOverDraft(String owner, AbsDataBase db) {
-        if (this.counter != db.counter) {
+        if (this.counter != ((OptimisticDataBase) db).counter) {
             return null;
         }
         this.counter++;
