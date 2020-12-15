@@ -18,14 +18,14 @@ public class OptimisticDataBase extends AbsDataBase {
         return new OptimisticDataBase(this.counter, this.carName, this.carPrice);
     }
 
-    public boolean takeOverDraft(OptimisticDataBase db) {
+    public OptimisticDataBase takeOverDraft(OptimisticDataBase db) {
         if (this.counter != db.counter) {
-            return false;
+            return null;
         }
         this.counter++;
         this.carName = db.carName;
         this.carPrice = db.carPrice;
-        return true;
+        return this;
     }
 
 }
