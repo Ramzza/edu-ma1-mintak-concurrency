@@ -18,19 +18,19 @@ public class MyThread implements Runnable {
             if (!this.olvas()) {
                 return;
             }
-            Thread.sleep(10);
+            Thread.sleep(1);
             if (!this.ir()) {
                 return;
             }
-            Thread.sleep(10);
+            Thread.sleep(1);
             if (!this.olvas()) {
                 return;
             }
-            Thread.sleep(10);
+            Thread.sleep(1);
             if (!this.ir()) {
                 return;
             }
-            Thread.sleep(10);
+            Thread.sleep(1);
         } catch (InterruptedException e) {
             System.out.println("Thread " + threadName + " interrupted.");
         }

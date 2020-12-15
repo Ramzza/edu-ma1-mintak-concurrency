@@ -4,12 +4,13 @@ public class OptimisticDataBase extends AbsDataBase {
     private int counter;
 
     public OptimisticDataBase(int counter, String carName, int carPrice) {
-        this.counter = 0;
+        this.counter = counter;
         this.carName = carName;
         this.carPrice = carPrice;
     }
 
     public OptimisticDataBase(String carName, int carPrice) {
+        this.counter = 0;
         this.carName = carName;
         this.carPrice = carPrice;
     }
