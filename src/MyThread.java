@@ -15,10 +15,8 @@ public class MyThread implements Runnable {
         System.out.println("Running " + threadName);
         // try {
         for (int i = 4; i > 0; i--) {
-            int iCounter = db.getCounter();
-            System.out.println("Thread: " + threadName + ", " + i + " ~~ counter: " + iCounter);
-            db.setCounter(iCounter + 1);
-            System.out.println("Thread: " + threadName + ", " + i + " ~~ counter increased to: " + (iCounter + 1));
+            System.out.println("Thread: " + threadName + ", " + i);
+            System.out.println("Thread: " + threadName + ", " + i);
             // Let the thread sleep for a while.
             // if (threadName == "Thread-1") {
             // Thread.sleep(10);
